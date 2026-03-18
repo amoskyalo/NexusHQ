@@ -1,12 +1,12 @@
 import { Response } from "express";
 
-type SendResponseArg = {
+type SendResponseArg<T> = {
     res: Response;
     message: string;
     status?: number;
-    data?: any;
+    data?: T;
 };
 
-export const sendResponse = ({ res, status = 200, message, data }: SendResponseArg) => {
+export const sendResponse = <T>({ res, status = 200, message, data }: SendResponseArg<T>) => {
     res.status(status).json({ success: true, message, data });
 };

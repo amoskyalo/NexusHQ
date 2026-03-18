@@ -1,19 +1,21 @@
 import express from "express";
-import { errorHandler } from "./middlewares/errorHandler.js";
-import routes from "./routes/routes.js";
+import { errorHandler } from "./shared/middleware/errorHandler.js";
+import usersRoute from "./modules/employees/employees.route.js";
 
 const app = express();
+
 app.use(express.json());
 
-app.get("/", (req, res) => {
+app.get("/", (_, res) => {
     res.json({
         success: true,
-        message: "API is running",
+        message: "APP is running",
         version: "1.0.0",
     });
 });
 
-app.use("/api", routes);
+app.use("/api/employees", usersRoute);
+
 app.use(errorHandler);
 
 export default app;

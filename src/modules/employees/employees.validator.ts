@@ -1,4 +1,4 @@
-export const usersValidators = {
+export const createEmployeeValidator = {
     email: {
         in: "body" as const,
         trim: true,
@@ -17,40 +17,41 @@ export const usersValidators = {
         normalizeEmail: true,
     },
 
-    password: {
-        in: "body" as const,
-        notEmpty: {
-            errorMessage: "Password is required",
-            bail: true,
-        },
-        isString: {
-            errorMessage: "Password must be a string",
-            bail: true,
-        },
-        isLength: {
-            options: { min: 8 },
-            errorMessage: "Password must be at least 8 characters",
-        },
-    },
-
-    full_name: {
+    firstName: {
         in: "body" as const,
         trim: true,
         notEmpty: {
-            errorMessage: "Full name is required",
+            errorMessage: "First name is required",
             bail: true,
         },
         isString: {
-            errorMessage: "Full name must be a string",
+            errorMessage: "First name must be a string",
             bail: true,
         },
         isLength: {
             options: { min: 2, max: 255 },
-            errorMessage: "Full name must be between 2 and 255 characters",
+            errorMessage: "First name must be between 2 and 255 characters",
         },
     },
 
-    phone: {
+    lastName: {
+        in: "body" as const,
+        trim: true,
+        notEmpty: {
+            errorMessage: "Last name is required",
+            bail: true,
+        },
+        isString: {
+            errorMessage: "Last name must be a string",
+            bail: true,
+        },
+        isLength: {
+            options: { min: 2, max: 255 },
+            errorMessage: "Last name must be between 2 and 255 characters",
+        },
+    },
+
+    phoneNumber: {
         in: "body" as const,
         trim: true,
         notEmpty: {

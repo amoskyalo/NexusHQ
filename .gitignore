@@ -1,0 +1,17 @@
+# dependencies
+node_modules
+
+# environment variables
+.env
+.env.*
+
+# build outputs
+dist
+build
+
+# logs
+*.log
+
+# prisma
+prisma/migrations/dev
+/generated/prisma

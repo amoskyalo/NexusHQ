@@ -1,0 +1,16 @@
+{
+    "name": "nexushq",
+    "version": "1.0.0",
+    "description": "NexusHQ Application Platform",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "client": "cd portalclient && pnpm dev",
+        "server": "cd portalserver && pnpm dev",
+        "install:client": "cd portalclient && pnpm install",
+        "install:server": "cd portalserver && pnpm install"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "packageManager": "pnpm@10.28.2"
+}

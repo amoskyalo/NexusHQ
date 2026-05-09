@@ -1,0 +1,28 @@
+import { UseQueryOptions } from "@tanstack/react-query";
+
+export type APIResponse<TData> = {
+    status: boolean;
+    message: string;
+    data: TData;
+    current_page: number;
+    pages: number;
+};
+
+export type MutationParams<TData, TParams> = {
+    data?: TData;
+    params?: TParams;
+    url: string;
+    id?: string | number | null;
+};
+
+export type GetParams<TData, TParams> = {
+    url: string;
+    params?: TParams;
+    options?: Omit<UseQueryOptions<APIResponse<TData>>, "queryKey" | "queryFn">;
+    id?: string | number | null;
+};
+
+export type MutationProps<T> = {
+    data: T;
+    cb: (arg: any) => void;
+};

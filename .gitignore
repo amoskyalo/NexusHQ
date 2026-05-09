@@ -1,5 +1,14 @@
 # dependencies
 node_modules
+/.pnp
+.pnp.*
+
+# testing
+coverage
+
+# next.js
+.next/
+out/
 
 # environment variables
 .env
@@ -15,3 +24,7 @@ build
 # prisma
 prisma/migrations/dev
 /generated/prisma
+
+# misc
+.DS_Store
+*.pem

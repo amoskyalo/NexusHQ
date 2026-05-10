@@ -3,7 +3,7 @@ import type { ThemeColors } from "../types/theme.types";
 
 export const defaultColors: ThemeColors = {
     primary: {
-        main: "#009fe3",
+        main: "#2f6a70",
     },
     secondary: {
         main: "#ab0b1f",
@@ -11,10 +11,16 @@ export const defaultColors: ThemeColors = {
 };
 
 const borderRadius = {
-    sm: "0.5rem",      
-    md: "1rem",        
-    lg: "1.5rem",      
-    pill: "3.125rem",  
+    sm: "0.5rem",
+    md: "1rem",
+    lg: "1.5rem",
+    pill: "3.125rem",
+};
+
+const height = {
+    sm: "2rem",
+    md: "2.6rem",
+    lg: "3.5rem",
 };
 
 const baseTypography = {
@@ -42,6 +48,7 @@ const baseButtonStyles = {
     root: {
         borderRadius: borderRadius.pill,
         textTransform: "none" as const,
+        minHeight: height.md,
     },
 };
 
@@ -124,237 +131,238 @@ const baseComponents = {
     },
 };
 
-export const createLightTheme = (colors?: ThemeColors): Theme => createTheme({
-    spacing: 8,
-    palette: {
-        mode: "light",
-        primary: colors?.primary ?? defaultColors.primary,
-        secondary: colors?.secondary ?? defaultColors.secondary,
-        background: {
-            default: colors?.backgroundLight?.default ?? "#ffffff",
-            paper: colors?.backgroundLight?.paper ?? "#ffffff",
-        },
-        text: {
-            primary: "#1E293B",
-            secondary: "#64748B",
-        },
-        divider: "rgba(0, 0, 0, 0.12)",
-    },
-    typography: baseTypography,
-    components: {
-        ...baseComponents,
-        MuiButton: {
-            ...baseComponents.MuiButton,
-            styleOverrides: {
-                ...baseComponents.MuiButton.styleOverrides,
-                ...getLightModeButtonStyles(),
+export const createLightTheme = (colors?: ThemeColors): Theme =>
+    createTheme({
+        spacing: 8,
+        palette: {
+            mode: "light",
+            primary: colors?.primary ?? defaultColors.primary,
+            secondary: colors?.secondary ?? defaultColors.secondary,
+            background: {
+                default: colors?.backgroundLight?.default ?? "#ffffff",
+                paper: colors?.backgroundLight?.paper ?? "#ffffff",
             },
+            text: {
+                primary: "#1E293B",
+                secondary: "#64748B",
+            },
+            divider: "rgba(0, 0, 0, 0.12)",
         },
-        MuiOutlinedInput: {
-            styleOverrides: {
-                root: {
-                    minHeight: "2.5rem",
-                    boxShadow: "0 0 0 0 transparent",
-                    transition: "box-shadow 0.2s ease-in-out, border-color 0.15s ease-in-out",
-                    "&:hover .MuiOutlinedInput-notchedOutline": {
+        typography: baseTypography,
+        components: {
+            ...baseComponents,
+            MuiButton: {
+                ...baseComponents.MuiButton,
+                styleOverrides: {
+                    ...baseComponents.MuiButton.styleOverrides,
+                    ...getLightModeButtonStyles(),
+                },
+            },
+            MuiOutlinedInput: {
+                styleOverrides: {
+                    root: {
+                        minHeight: height.md,
+                        boxShadow: "0 0 0 0 transparent",
+                        transition: "box-shadow 0.2s ease-in-out, border-color 0.15s ease-in-out",
+                        "&:hover .MuiOutlinedInput-notchedOutline": {
+                            borderColor: "rgba(0, 0, 0, 0.12)",
+                        },
+                        "&.Mui-focused": {
+                            boxShadow:
+                                "0 0 0 0.0625rem rgba(0, 0, 0, 0.23), 0 0 0 0.25rem rgba(0, 0, 0, 0.1) !important",
+                        },
+                        "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                            borderColor: "transparent !important",
+                            borderWidth: "0.0625rem !important",
+                        },
+                    },
+                    notchedOutline: {
                         borderColor: "rgba(0, 0, 0, 0.12)",
-                    },
-                    "&.Mui-focused": {
-                        boxShadow: "0 0 0 0.0625rem rgba(0, 0, 0, 0.23), 0 0 0 0.25rem rgba(0, 0, 0, 0.1) !important",
-                    },
-                    "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                        borderColor: "transparent !important",
-                        borderWidth: "0.0625rem !important",
-                    },
-                },
-                notchedOutline: {
-                    borderColor: "rgba(0, 0, 0, 0.12)",
-                    borderWidth: "0.0625rem",
-                    transition: "border-color 0.15s ease-in-out",
-                },
-            },
-        },
-        MuiPaper: {
-            styleOverrides: {
-                root: {
-                    boxShadow: "0 0.5rem 2rem 0 rgba(31, 38, 135, 0.1)",
-                    backgroundColor: "rgba(255, 255, 255, 0.7)",
-                    backdropFilter: "blur(0.75rem)",
-                    WebkitBackdropFilter: "blur(0.75rem)",
-                    border: "0.0625rem solid rgba(255, 255, 255, 0.18)",
-                    transition: "none",
-                },
-            },
-        },
-        MuiCard: {
-            styleOverrides: {
-                ...baseComponents.MuiCard.styleOverrides,
-                root: {
-                    ...baseComponents.MuiCard.styleOverrides.root,
-                    boxShadow: "0 0.625rem 2.5rem rgba(0, 0, 0, 0.1)",
-                    backgroundColor: "rgba(255, 255, 255, 0.7)",
-                    backdropFilter: "blur(0.75rem)",
-                    WebkitBackdropFilter: "blur(0.75rem)",
-                    border: "0.0625rem solid rgba(255, 255, 255, 0.18)",
-                    transition: "transform 0.3s ease, box-shadow 0.3s ease",
-                    "&:hover": {
-                        ...baseComponents.MuiCard.styleOverrides.root["&:hover"],
-                        boxShadow: "0 1.25rem 3.75rem rgba(0, 0, 0, 0.15)",
+                        borderWidth: "0.0625rem",
+                        transition: "border-color 0.15s ease-in-out",
                     },
                 },
             },
-        },
-        MuiDialog: {
-            styleOverrides: {
-                paper: {
-                    borderRadius: borderRadius.md,
+            MuiPaper: {
+                styleOverrides: {
+                    root: {
+                        boxShadow: "0 0.5rem 2rem 0 rgba(31, 38, 135, 0.1)",
+                        backgroundColor: "rgba(255, 255, 255, 0.7)",
+                        backdropFilter: "blur(0.75rem)",
+                        WebkitBackdropFilter: "blur(0.75rem)",
+                        border: "0.0625rem solid rgba(255, 255, 255, 0.18)",
+                        transition: "none",
+                    },
                 },
             },
-        },
-        MuiToolbar: {
-            styleOverrides: {
-                root: {
-                    "@media (min-width: 600px)": {
-                        minHeight: "3.5rem",
+            MuiCard: {
+                styleOverrides: {
+                    ...baseComponents.MuiCard.styleOverrides,
+                    root: {
+                        ...baseComponents.MuiCard.styleOverrides.root,
+                        boxShadow: "0 0.625rem 2.5rem rgba(0, 0, 0, 0.1)",
+                        backgroundColor: "rgba(255, 255, 255, 0.7)",
+                        backdropFilter: "blur(0.75rem)",
+                        WebkitBackdropFilter: "blur(0.75rem)",
+                        border: "0.0625rem solid rgba(255, 255, 255, 0.18)",
+                        transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                        "&:hover": {
+                            ...baseComponents.MuiCard.styleOverrides.root["&:hover"],
+                            boxShadow: "0 1.25rem 3.75rem rgba(0, 0, 0, 0.15)",
+                        },
+                    },
+                },
+            },
+            MuiDialog: {
+                styleOverrides: {
+                    paper: {
+                        borderRadius: borderRadius.md,
+                    },
+                },
+            },
+            MuiToolbar: {
+                styleOverrides: {
+                    root: {
+                        "@media (min-width: 600px)": {
+                            minHeight: "3.5rem",
+                        },
+                    },
+                },
+            },
+            MuiMenu: {
+                styleOverrides: {
+                    paper: {
+                        elevation: 0,
+                        borderRadius: borderRadius.sm,
+                        boxShadow: "0 0.5rem 2rem 0 rgba(31, 38, 135, 0.1)",
+                        backgroundColor: "rgba(255, 255, 255, 0.85)",
+                        backdropFilter: "blur(0.75rem)",
+                        WebkitBackdropFilter: "blur(0.75rem)",
+                        border: "0.0625rem solid rgba(0, 0, 0, 0.08)",
                     },
                 },
             },
         },
-        MuiMenu: {
-            styleOverrides: {
-                paper: {
-                    elevation: 0,
-                    borderRadius: borderRadius.sm,
-                    boxShadow: "0 0.5rem 2rem 0 rgba(31, 38, 135, 0.1)",
-                    backgroundColor: "rgba(255, 255, 255, 0.85)",
-                    backdropFilter: "blur(0.75rem)",
-                    WebkitBackdropFilter: "blur(0.75rem)",
-                    border: "0.0625rem solid rgba(0, 0, 0, 0.08)",
-                },
-            },
-        },
-    },
-});
+    });
 
-export const createDarkTheme = (colors?: ThemeColors): Theme => createTheme({
-    spacing: 8,
-    palette: {
-        mode: "dark",
-        primary: colors?.primary ?? defaultColors.primary,
-        secondary: colors?.secondary ?? defaultColors.secondary,
-        background: {
-            default: colors?.backgroundDark?.default ?? "#0f172a",
-            paper: colors?.backgroundDark?.paper ?? "#1e293b",
-        },
-        text: {
-            primary: "#f8fafc",
-            secondary: "#94a3b8",
-        },
-        divider: "rgba(255, 255, 255, 0.12)",
-    },
-    typography: baseTypography,
-    components: {
-        ...baseComponents,
-        MuiButton: {
-            ...baseComponents.MuiButton,
-            styleOverrides: {
-                ...baseComponents.MuiButton.styleOverrides,
-                ...getDarkModeButtonStyles(),
+export const createDarkTheme = (colors?: ThemeColors): Theme =>
+    createTheme({
+        spacing: 8,
+        palette: {
+            mode: "dark",
+            primary: colors?.primary ?? defaultColors.primary,
+            secondary: colors?.secondary ?? defaultColors.secondary,
+            background: {
+                default: colors?.backgroundDark?.default ?? "#0f172a",
+                paper: colors?.backgroundDark?.paper ?? "#1e293b",
             },
+            text: {
+                primary: "#f8fafc",
+                secondary: "#94a3b8",
+            },
+            divider: "rgba(255, 255, 255, 0.12)",
         },
-        MuiOutlinedInput: {
-            styleOverrides: {
-                root: {
-                    minHeight: "2.5rem",
-                    boxShadow: "0 0 0 0 transparent",
-                    transition: "box-shadow 0.2s ease-in-out, border-color 0.15s ease-in-out",
-                    "&:hover .MuiOutlinedInput-notchedOutline": {
-                        borderColor: "rgba(255, 255, 255, 0.2)",
-                    },
-                    "&.Mui-focused": {
-                        boxShadow:
-                            "0 0 0 0.0625rem rgba(255, 255, 255, 0.23), 0 0 0 0.25rem rgba(255, 255, 255, 0.1) !important",
-                    },
-                    "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                        borderColor: "transparent !important",
-                        borderWidth: "0.0625rem !important",
-                    },
-                },
-                notchedOutline: {
-                    borderColor: "rgba(255, 255, 255, 0.12)",
-                    borderWidth: "0.0625rem",
-                    transition: "border-color 0.15s ease-in-out",
+        typography: baseTypography,
+        components: {
+            ...baseComponents,
+            MuiButton: {
+                ...baseComponents.MuiButton,
+                styleOverrides: {
+                    ...baseComponents.MuiButton.styleOverrides,
+                    ...getDarkModeButtonStyles(),
                 },
             },
-        },
-        MuiPaper: {
-            styleOverrides: {
-                root: {
-                    boxShadow: "0 0.5rem 2rem 0 rgba(0, 0, 0, 0.37)",
-                    backgroundImage: "none",
-                    backgroundColor: "rgba(30, 41, 59, 0.4)",
-                    backdropFilter: "blur(0.8rem)",
-                    WebkitBackdropFilter: "blur(0.8rem)",
-                    border: "0.0625rem solid rgba(255, 255, 255, 0.08)",
-                    transition: "none",
-                },
-            },
-        },
-        MuiCard: {
-            styleOverrides: {
-                ...baseComponents.MuiCard.styleOverrides,
-                root: {
-                    ...baseComponents.MuiCard.styleOverrides.root,
-                    boxShadow: "0 0.625rem 2.5rem rgba(0, 0, 0, 0.3)",
-                    backgroundColor: "rgba(30, 41, 59, 0.4)",
-                    backdropFilter: "blur(0.8rem)",
-                    WebkitBackdropFilter: "blur(0.8rem)",
-                    border: "0.0625rem solid rgba(255, 255, 255, 0.08)",
-                    transition: "transform 0.3s ease, box-shadow 0.3s ease",
-                    "&:hover": {
-                        ...baseComponents.MuiCard.styleOverrides.root["&:hover"],
-                        boxShadow: "0 1.25rem 3.75rem rgba(0, 0, 0, 0.4)",
+            MuiOutlinedInput: {
+                styleOverrides: {
+                    root: {
+                        minHeight: height.md,
+                        boxShadow: "0 0 0 0 transparent",
+                        transition: "box-shadow 0.2s ease-in-out, border-color 0.15s ease-in-out",
+                        "&:hover .MuiOutlinedInput-notchedOutline": {
+                            borderColor: "rgba(255, 255, 255, 0.2)",
+                        },
+                        "&.Mui-focused": {
+                            boxShadow:
+                                "0 0 0 0.0625rem rgba(255, 255, 255, 0.23), 0 0 0 0.25rem rgba(255, 255, 255, 0.1) !important",
+                        },
+                        "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                            borderColor: "transparent !important",
+                            borderWidth: "0.0625rem !important",
+                        },
+                    },
+                    notchedOutline: {
+                        borderColor: "rgba(255, 255, 255, 0.12)",
+                        borderWidth: "0.0625rem",
+                        transition: "border-color 0.15s ease-in-out",
                     },
                 },
             },
-        },
-        MuiDialog: {
-            styleOverrides: {
-                paper: {
-                    borderRadius: borderRadius.md,
+            MuiPaper: {
+                styleOverrides: {
+                    root: {
+                        boxShadow: "0 0.5rem 2rem 0 rgba(0, 0, 0, 0.37)",
+                        backgroundImage: "none",
+                        backgroundColor: "rgba(30, 41, 59, 0.4)",
+                        backdropFilter: "blur(0.8rem)",
+                        WebkitBackdropFilter: "blur(0.8rem)",
+                        border: "0.0625rem solid rgba(255, 255, 255, 0.08)",
+                        transition: "none",
+                    },
                 },
             },
-        },
-        MuiToolbar: {
-            styleOverrides: {
-                root: {
-                    "@media (min-width: 600px)": {
-                        minHeight: "3.5rem",
+            MuiCard: {
+                styleOverrides: {
+                    ...baseComponents.MuiCard.styleOverrides,
+                    root: {
+                        ...baseComponents.MuiCard.styleOverrides.root,
+                        boxShadow: "0 0.625rem 2.5rem rgba(0, 0, 0, 0.3)",
+                        backgroundColor: "rgba(30, 41, 59, 0.4)",
+                        backdropFilter: "blur(0.8rem)",
+                        WebkitBackdropFilter: "blur(0.8rem)",
+                        border: "0.0625rem solid rgba(255, 255, 255, 0.08)",
+                        transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                        "&:hover": {
+                            ...baseComponents.MuiCard.styleOverrides.root["&:hover"],
+                            boxShadow: "0 1.25rem 3.75rem rgba(0, 0, 0, 0.4)",
+                        },
+                    },
+                },
+            },
+            MuiDialog: {
+                styleOverrides: {
+                    paper: {
+                        borderRadius: borderRadius.md,
+                    },
+                },
+            },
+            MuiToolbar: {
+                styleOverrides: {
+                    root: {
+                        "@media (min-width: 600px)": {
+                            minHeight: "3.5rem",
+                        },
+                    },
+                },
+            },
+            MuiMenu: {
+                styleOverrides: {
+                    paper: {
+                        elevation: 0,
+                        borderRadius: borderRadius.sm,
+                        boxShadow: "0 0.5rem 2rem 0 rgba(0, 0, 0, 0.37)",
+                        backgroundColor: "rgba(30, 41, 59, 0.85)",
+                        backdropFilter: "blur(0.8rem)",
+                        WebkitBackdropFilter: "blur(0.8rem)",
+                        border: "0.0625rem solid rgba(255, 255, 255, 0.08)",
                     },
                 },
             },
         },
-        MuiMenu: {
-            styleOverrides: {
-                paper: {
-                    elevation: 0,
-                    borderRadius: borderRadius.sm,
-                    boxShadow: "0 0.5rem 2rem 0 rgba(0, 0, 0, 0.37)",
-                    backgroundColor: "rgba(30, 41, 59, 0.85)",
-                    backdropFilter: "blur(0.8rem)",
-                    WebkitBackdropFilter: "blur(0.8rem)",
-                    border: "0.0625rem solid rgba(255, 255, 255, 0.08)",
-                },
-            },
-        },
-    },
-});
+    });
 
-// Default themes using default colors (for backward compatibility)
 export const lightTheme = createLightTheme();
 export const darkTheme = createDarkTheme();
 
-// Helper function to create both themes with custom colors
 export const createThemes = (colors?: ThemeColors) => ({
     light: createLightTheme(colors),
     dark: createDarkTheme(colors),

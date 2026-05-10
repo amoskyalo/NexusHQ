@@ -2,7 +2,7 @@ import { APIResponse } from "@/hooks/types/hooks.types";
 import { MutateOptionsProps } from "./types/functions.types";
 import { snackbarToast } from "@/components/snackbar";
 
-export function mutationStatus<TData>({
+export function createMutationHandlers<TData>({
     successCallback,
     successAsyncCallback,
     errorCallback,
@@ -25,7 +25,7 @@ export function mutationStatus<TData>({
     };
 
     const onError = (error: any) => {
-        const message = error?.message ?? "Network error occurred!";
+        const message = error.response?.data?.message ?? "Network error occurred!";
         snackbarToast.error(message);
         errorCallback?.(error);
     };

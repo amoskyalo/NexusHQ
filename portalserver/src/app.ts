@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 import { errorHandler } from "./shared/middleware/errorHandler";
 import { authMiddleware } from "./shared/middleware/authMiddleware";
 import usersRoute from "./modules/employees/employees.route";
@@ -7,7 +8,13 @@ import profileRoutes from "./modules/me/me.routes";
 
 const app = express();
 
-app.use(express.json());
+app.use(
+    express.json(),
+    cors({
+        credentials: true,
+        origin: ["http://localhost:3000"],
+    }),
+);
 
 app.get("/", (_, res) => {
     res.json({

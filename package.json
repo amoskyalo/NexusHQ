@@ -4,8 +4,8 @@
     "description": "NexusHQ Application Platform",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "client": "cd portalclient && pnpm dev",
-        "server": "cd portalserver && pnpm dev",
+        "portalclient": "cd portalclient && pnpm dev",
+        "portalserver": "cd portalserver && pnpm dev",
         "install:client": "cd portalclient && pnpm install",
         "install:server": "cd portalserver && pnpm install",
         "build:client": "cd portalclient && pnpm build"

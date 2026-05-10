@@ -2,10 +2,9 @@
 
 import { Box, InputAdornment, IconButton, TextField } from "@mui/material";
 import { useState } from "react";
-import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
-import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { InputLabel } from "./InputLabel";
 import { TextInputProps } from "../types/inputs.types";
+import { Eye, EyeOff } from "lucide-react";
 
 export const TextInput = ({
     label,
@@ -41,7 +40,7 @@ export const TextInput = ({
                             isPassword && !multiline ? (
                                 <InputAdornment position="end" sx={{ cursor: "pointer" }}>
                                     <IconButton edge="end" onClick={() => setShowPassword(!showPassword)}>
-                                        {showPassword ? <VisibilityOffIcon /> : <RemoveRedEyeIcon />}
+                                        {showPassword ? <EyeOff size={20}/> : <Eye size={20} />}
                                     </IconButton>
                                 </InputAdornment>
                             ) : (
@@ -50,7 +49,7 @@ export const TextInput = ({
                         startAdornment: isCurrency ? (
                             <InputAdornment position="start">KES</InputAdornment>
                         ) : (
-                            (slotProps?.input as any)?.startAdornment?.()
+                            (slotProps?.input as any)?.startAdornment
                         ),
                     },
                 }}

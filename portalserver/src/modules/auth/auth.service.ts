@@ -9,6 +9,7 @@ export const createUserService = async (data: User) => {
     const { password, ...rest } = data;
 
     const hashedPassword = await hashPassword(password);
+    console.log('jere')
 
     return prisma.user.create({
         data: {

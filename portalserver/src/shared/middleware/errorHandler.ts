@@ -6,14 +6,21 @@ export const errorHandler = (err: Error, req: Request, res: Response, next: Next
     const message = err.message || "Internal server error";
     const isOperational = (err as any).isOperational || false;
 
-    if(err instanceof Prisma.PrismaClientKnownRequestError) {
-        console.log(err.code);
+    if (err instanceof Prisma.PrismaClientKnownRequestError) {
+        const errorCode = err.code;
+
+        if (errorCode == "P2002") {
+            const raw = (err.meta?.driverAdapterError as any)?.cause?.constraint?.fields?.[0];
+            const constraint = raw?.replace(/"/g, "") ?? "field";
+            return res.status(400).json({ success: false, message: `Record with this ${constraint} already exists` });
+        }
+
+        return res.status(500).json({ success: false, message: "Internal server error" });
     }
 
     if (!isOperational) {
-        console.error(err);
+        // console.error(err);
     }
 
-    res.status(statusCode).json({ success: false, message });
+    return res.status(statusCode).json({ success: false, message });
 };
-

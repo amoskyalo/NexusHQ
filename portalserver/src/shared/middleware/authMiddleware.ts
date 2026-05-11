@@ -5,8 +5,7 @@ import { config } from "../../config";
 
 export const authMiddleware = (req: Request, res: Response, next: NextFunction) => {
     try {
-        const token = req.headers.authorization?.split(" ")[1];
-
+        const token = ""; // will read this from cookie.
         if (!token) {
             throw new AppError("Unauthorized", 401);
         }

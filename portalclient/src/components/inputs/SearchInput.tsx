@@ -31,7 +31,7 @@ export const SearchInput = ({ width = "250px", ...props }: TextFieldProps & { wi
             sx={{
                 border: 1,
                 borderColor: "divider",
-                py: 0.4,
+                py: 0.3,
                 px: 1,
                 borderRadius: 50,
             }}

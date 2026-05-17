@@ -8,7 +8,7 @@ export const AppGrid = (props: DataGridProps) => {
         <Box>
             <DataGrid
                 {...props}
-                getRowHeight={() => "auto"}
+                // getRowHeight={() => "auto"}
                 getRowClassName={({ indexRelativeToCurrentPage }) =>
                     indexRelativeToCurrentPage % 2 === 0 ? "even-row" : "odd-row"
                 }
@@ -33,7 +33,6 @@ export const AppGrid = (props: DataGridProps) => {
                         },
                     },
                     "& .MuiDataGrid-cell": {
-                        py: 1,
                         lineHeight: 1.5,
                         whiteSpace: "normal",
                         wordBreak: "break-word",

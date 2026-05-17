@@ -16,6 +16,7 @@ export const LoadingButton = ({
             sx={{
                 minWidth: 100,
                 fontWeight: 400,
+                fontSize: 14,
                 py: 1,
                 ...sx,
             }}

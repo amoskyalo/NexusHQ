@@ -9,6 +9,9 @@ export const getUserProfileService = async (userId: string) => {
         omit: {
             password: true,
         },
+        include: {
+            organizations: true,
+        },
     });
 
     if (!user) {

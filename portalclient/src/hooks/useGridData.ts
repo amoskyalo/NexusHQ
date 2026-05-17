@@ -36,7 +36,7 @@ export const useGridData = <TRow = any>(args: UseGridDataArgs): UseGridDataResul
     };
 
     return {
-        rows: (response?.data ?? []) as TRow[],
+        rows: (response?.body ?? []) as TRow[],
         pages: response?.pages,
         currentPage: response?.current_page,
         loading: isLoading || isRefetching,

@@ -22,7 +22,7 @@ import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import Image from "next/image";
 import type { SideNavProps } from "../types/sidenav.types";
 
-const DRAWER_WIDTH_EXPANDED = 275;
+const DRAWER_WIDTH_EXPANDED = 300;
 const DRAWER_WIDTH_COLLAPSED = 70;
 
 export const SideNav = ({ routes }: SideNavProps) => {

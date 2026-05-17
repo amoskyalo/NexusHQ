@@ -8,15 +8,44 @@ datasource db {
 }
 
 model User {
-  id            String   @id @default(uuid())
+  id            String          @id @default(uuid())
   firstName     String
   lastName      String
-  phoneNumber   String   @unique
-  email         String   @unique
+  phoneNumber   String          @unique
+  email         String          @unique
   password      String
-  organizations String[]
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
+  role          ROLE            @default(ADMIN)
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+  organizations Organizations[]
 
   @@map("users")
+}
+
+model Organizations {
+  id        String   @id @default(uuid())
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String //foreign key in postgress!!
+  name      String   @unique
+  slug      String   @unique
+  industry  String
+  modules   String[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("organizations")
+}
+
+enum ROLE {
+  ADMIN
+  FINANCE
+  MARKETING
+  IT
+}
+
+enum MODULES {
+  HR
+  FINANCE
+  TECH
+  AGILE
 }

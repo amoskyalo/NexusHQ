@@ -16,9 +16,9 @@ export const PageContainer = ({ title, description, tabs, children }: PageContai
     const tab = getParam("tab");
 
     return (
-        <Stack spacing={2} sx={{paddingX: 2, paddingTop: 2}}>
+        <Stack spacing={2}>
             <Box>
-                <Typography variant="body1" sx={{ fontWeight: "600" }}>
+                <Typography variant="h5" sx={{ fontWeight: "600" }}>
                     {title}
                 </Typography>
                 <Typography variant="body2" sx={{ color: "text.secondary" }}>

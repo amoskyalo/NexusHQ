@@ -18,10 +18,10 @@ export type GetFormikFieldPropsArgs<Type> = {
     isFile?: boolean;
 };
 
-export type MutateOptionsProps<TData> = {
-    successAsyncCallback?: (arg: APIResponse<TData>) => Promise<void>;
-    successCallback?: (arg: APIResponse<TData>) => void;
-    errorCallback?: (arg: APIResponse<TData>) => void;
+export type MutateOptionsProps<TBody> = {
+    successAsyncCallback?: (arg: APIResponse<TBody>) => Promise<void>;
+    successCallback?: (arg: APIResponse<TBody>) => void;
+    errorCallback?: (arg: APIResponse<TBody>) => void;
     hideSuccessToast?: boolean;
 };
 

@@ -4,13 +4,16 @@ export type Permission = {
 };
 
 export type UserType = {
-    userId: string;
+    id: string;
+    phoneNumber: string;
+    email: string;
     role: string;
-    roles: string[];
-    department: string;
-    accessGroup: string;
-    mobile: string;
-    permissions: Permission[];
+    createdAt: string;
+    updatedAt: string;
+    organizations: [];
+    firstName: string;
+    lastName: string;
+    displayName: string;
 };
 
 export type AuthStates = {

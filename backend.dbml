@@ -1,0 +1,36 @@
+Table users {
+  id            String [primary key]
+  firstName     String
+  lastName      String
+  phoneNumber   String 
+  email         String
+  password      String
+  organizations String[]
+  role          ROLE [default: 'ADMIN']
+  createdAt     DateTime
+  updatedAt     DateTime
+}
+
+Table organizations {
+  id        String [primary key]
+  userId   string [not null]
+  orgName   String
+  slug      String
+  modules   MODULES[]
+}
+
+enum ROLE {
+  ADMIN
+  FINANCE
+  MARKETING
+  IT
+}
+
+enum MODULES {
+  HR
+  FINANCE
+  TECH
+  AGILE
+}
+
+Ref: "organizations"."userId" < "users"."id"

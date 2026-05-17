@@ -16,6 +16,7 @@
     "packageManager": "pnpm@10.24.0",
     "devDependencies": {
         "@types/bcrypt": "^6.0.0",
+        "@types/cookie-parser": "^1.4.10",
         "@types/cors": "^2.8.19",
         "@types/express": "^5.0.6",
         "@types/jsonwebtoken": "^9.0.10",
@@ -31,6 +32,7 @@
         "@prisma/adapter-pg": "^7.7.0",
         "@prisma/client": "^7.7.0",
         "bcrypt": "^6.0.0",
+        "cookie-parser": "^1.4.7",
         "cors": "^2.8.6",
         "dotenv": "^17.2.3",
         "express": "^5.2.1",

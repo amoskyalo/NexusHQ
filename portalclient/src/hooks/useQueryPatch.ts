@@ -6,8 +6,8 @@ import { MutationParams } from "./types/hooks.types";
 
 export const useQueryPatch = <TData, TParams>() => {
     return useMutation({
-        mutationFn: async ({ data, params, url }: MutationParams<TData, TParams>) => {
-            const response = await axiosInstance.patch(url, data, { params });
+        mutationFn: async ({ body, params, url }: MutationParams<TData, TParams>) => {
+            const response = await axiosInstance.patch(url, body, { params });
             return response.data;
         },
     });

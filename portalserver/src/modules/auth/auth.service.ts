@@ -18,6 +18,9 @@ export const createUserService = async (data: User) => {
         omit: {
             password: true,
         },
+        include: {
+            organizations: true,
+        },
     });
 };
 
@@ -28,22 +31,23 @@ export const loginService = async (data: Pick<User, "email" | "password">) => {
         where: {
             email,
         },
+        include: {
+            organizations: true,
+        },
     });
 
     if (!user) {
         throw new AppError("User not found", 404);
     }
 
-    const userPassword = user.password;
+    const { role, organizations, password: userPassword } = user;
     const comparePasswordResults = await comparePassword(password, userPassword);
 
     if (!comparePasswordResults) {
         throw new AppError("Username or password is incorrect", 401);
     }
 
-    const { password: _, ...userWithoutPassword } = user;
+    const accessToken = jwt.sign({ userId: user.id, role: user.role }, config.jwtSecret, { expiresIn: "30m" });
 
-    const accessToken = jwt.sign({ userId: user.id }, config.jwtSecret, { expiresIn: "1h" });
-
-    return { accessToken };
+    return { accessToken, role, organizations };
 };

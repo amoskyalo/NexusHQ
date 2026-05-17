@@ -11,7 +11,6 @@ export const validationHandler = (schema: ZodType) => {
 
         req.body = results.data.body;
         req.params = results.data.params;
-        // req.query = results.data.query;
 
         next();
     };

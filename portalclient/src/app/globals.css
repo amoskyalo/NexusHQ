@@ -1,22 +1,55 @@
-html {
-  height: 100%;
-}
-
 html,
 body {
-  max-width: 100vw;
-  overflow-x: hidden;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overscroll-behavior: none !important;
 }
 
-body {}
+#__next {
+    width: 100%;
+    height: 100%;
+}
 
 * {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    scrollbar-color: rgba(0, 0, 0, 0.3) transparent !important;
+}
+
+.dark * {
+    scrollbar-color: rgba(255, 255, 255, 0.3) transparent !important;
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
+    color: inherit;
+    text-decoration: none;
+}
+
+.MuiDataGrid-scrollbar {
+    scrollbar-width: thin !important;
+    padding-top: 0px !important;
+    margin-top: 0px !important;
+    height: 10px !important;
+}
+
+.nav-links-container,
+.MuiDataGrid-scrollbar,
+.MuiPaper-root,
+.MuiMenu-paper,
+.MuiSelect-paper,
+.MuiBox-root,
+.MuiAutocomplete-paper {
+    scrollbar-width: thin !important;
+}
+
+#form-dialog-content {
+    scrollbar-width: thin !important;
+}
+
+.MuiAreaElement-root {
+    fill: url(#fade-gradient) !important;
 }

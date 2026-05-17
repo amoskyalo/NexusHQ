@@ -15,12 +15,11 @@ const AuthContext = createContext<AuthContextProps>({
 const AuthContextProvider = ({ children }: { children: React.ReactNode }) => {
     const router = useRouter();
 
-    const query = useQueryGet<UserType, undefined>({ url: "/me" });
-    const { data, isLoading, isFetching, isError, refetch } = query;
-    const me = data?.data;
+    const { data, isLoading, isFetching, isError, refetch } = useQueryGet<UserType, undefined>({ url: "/api/me" });
+    const me = data?.body;
 
     useEffect(() => {
-        if (isError) router.push("/auth/login");
+        // if (isError) router.push("/auth/signin");
     }, [isError, router]);
 
     const value: AuthContextProps = useMemo(

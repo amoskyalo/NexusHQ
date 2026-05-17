@@ -4,10 +4,16 @@ import { SignInInitialValues, SignUpInitialValues } from "../_types/auth.types";
 import { useRouter } from "next/navigation";
 
 export const useSignIn = () => {
+    const router = useRouter();
+
     const { mutate: signIn, isPending } = useQueryPost({
-        options: createMutationHandlers({
-            successCallback: (data) => {
-                console.log(data);
+        options: createMutationHandlers<{ role: string; organizations: string[] }>({
+            successCallback: ({ body: { organizations, role } }) => {
+                if (role == "ADMIN" && organizations.length == 0) {
+                    router.push("/onboarding");
+                } else {
+                    router.push("/dashboard");
+                }
             },
         }),
     });
@@ -15,7 +21,7 @@ export const useSignIn = () => {
     const handleSignIn = (values: SignInInitialValues) => {
         signIn({
             url: "api/auth/login",
-            data: values,
+            body: values,
         });
     };
 
@@ -44,7 +50,7 @@ export const useSignUp = () => {
 
         signUp({
             url: "api/auth/signup",
-            data: {
+            body: {
                 phoneNumber: `254${phone}`,
                 ...payload,
             },

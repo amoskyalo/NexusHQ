@@ -2,26 +2,26 @@ import { APIResponse } from "@/hooks/types/hooks.types";
 import { MutateOptionsProps } from "./types/functions.types";
 import { snackbarToast } from "@/components/snackbar";
 
-export function createMutationHandlers<TData>({
+export function createMutationHandlers<TBody>({
     successCallback,
     successAsyncCallback,
     errorCallback,
     hideSuccessToast,
-}: MutateOptionsProps<TData>) {
-    const success = (data: APIResponse<TData>) => {
-        const { message } = data;
+}: MutateOptionsProps<TBody>) {
+    const success = (body: APIResponse<TBody>) => {
+        const { message } = body;
         if (!hideSuccessToast) {
             snackbarToast.success(message);
         }
-        successCallback?.(data);
+        successCallback?.(body);
     };
 
-    const successAsync = async (data: APIResponse<TData>) => {
-        const { message } = data;
+    const successAsync = async (body: APIResponse<TBody>) => {
+        const { message } = body;
         if (!hideSuccessToast) {
             snackbarToast.success(message);
         }
-        await successAsyncCallback?.(data);
+        await successAsyncCallback?.(body);
     };
 
     const onError = (error: any) => {

@@ -5,13 +5,14 @@ import { config } from "../../config";
 
 export const authMiddleware = (req: Request, res: Response, next: NextFunction) => {
     try {
-        const token = ""; // will read this from cookie.
+        const token = req.cookies.accessToken;
+        
         if (!token) {
             throw new AppError("Unauthorized", 401);
         }
 
         const decoded = jwt.verify(token, config.jwtSecret) as { userId: string };
-        req.user = decoded.userId;
+        req.userId = decoded.userId;
 
         next();
     } catch (error: any) {
@@ -23,6 +24,6 @@ export const authMiddleware = (req: Request, res: Response, next: NextFunction) 
             throw new AppError("Expired token provided", 401);
         }
 
-        throw new AppError("Internal server error", 500);
+        throw new AppError("Invalid token provided", 401);
     }
 };

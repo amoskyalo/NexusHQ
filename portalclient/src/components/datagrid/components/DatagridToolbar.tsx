@@ -51,9 +51,9 @@ export const DatagridToolbar = ({
                             gap: 1,
                         }}
                     >
-                        {!isMobile && searchConfig !== null && (
+                        {/* {!isMobile && searchConfig !== null && (
                             <DataGridSearchInput placeholder={searchConfig?.placeholder ?? "Type to search..."} />
-                        )}
+                        )} */}
                         {showDateFilters && (
                             <LocalizationProvider dateAdapter={AdapterDayjs}>
                                 <DatePicker
@@ -156,6 +156,8 @@ export const DatagridToolbar = ({
                                     pr: 1.3,
                                     height: "max-content !important",
                                     gap: 0.5,
+                                    minHeight: "30px",
+                                    maxHeight: "30px",
                                 }}
                                 onClick={() => buttons?.download?.onClick?.()}
                                 disabled={buttons?.download?.disabled}
@@ -199,6 +201,8 @@ export const DatagridToolbar = ({
                                         pr: 1.3,
                                         height: "max-content !important",
                                         gap: 0.5,
+                                        minHeight: "30px",
+                                        maxHeight: "30px",
                                     }}
                                     onClick={buttons?.add?.onClick}
                                     variant="contained"

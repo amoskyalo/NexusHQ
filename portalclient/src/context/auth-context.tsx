@@ -19,7 +19,7 @@ const AuthContextProvider = ({ children }: { children: React.ReactNode }) => {
     const me = data?.body;
 
     useEffect(() => {
-        // if (isError) router.push("/auth/signin");
+        if (isError) router.push("/auth/signin");
     }, [isError, router]);
 
     const value: AuthContextProps = useMemo(

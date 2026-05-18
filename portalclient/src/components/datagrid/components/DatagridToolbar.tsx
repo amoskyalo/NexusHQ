@@ -46,8 +46,8 @@ export const DatagridToolbar = ({
                             justifyContent: "flex-end",
                             alignItems: "center",
                             borderBottom: 1,
-                            borderColor: "divider",
-                            padding: "8px",
+                            borderColor: "var(--DataGrid-rowBorderColor)",
+                            paddingY: "8px",
                             gap: 1,
                         }}
                     >

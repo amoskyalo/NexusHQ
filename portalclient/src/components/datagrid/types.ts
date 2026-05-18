@@ -86,16 +86,26 @@ export type GridOption = {
     children?: GridOption[];
 };
 
+type AppGridColumnBase = GridColDef & {
+    mobileWidth?: number;
+    copiable?: boolean;
+    filterSelectOptions?: { label: string; value: string }[];
+};
+
+/**
+ * Column variants are discriminated by `formatValueTo` so format-specific
+ * props (e.g. `showTime` for dates) are only allowed on the matching variant.
+ */
+export type AppGridColumn =
+    | (AppGridColumnBase & { formatValueTo?: undefined })
+    | (AppGridColumnBase & { formatValueTo: "currency" })
+    | (AppGridColumnBase & { formatValueTo: "date"; showTime?: boolean });
+
 export type GridProps<_TData, TParams> = Omit<DataGridProps, "columns"> &
     DataGridToolbarProps &
     DataGridFooterProps & {
         hasActions?: boolean;
-        columns: (GridColDef & {
-            mobileWidth?: number;
-            copiable?: boolean;
-            formatValueTo?: "date" | "currency";
-            filterSelectOptions?: { label: string; value: string }[];
-        })[];
+        columns: AppGridColumn[];
         params?: TParams;
         actions?: Array<"edit" | "delete" | "options" | "custom">;
         options?: GridOption[];

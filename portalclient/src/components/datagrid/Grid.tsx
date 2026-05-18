@@ -144,7 +144,7 @@ export const Grid = <TData, TParams>(gridProps: GridModelProps<TData, TParams>) 
 
     return (
         <>
-            <Box sx={{ borderRadius: 4, backgroundColor: '#fff' }}>
+            <Box sx={{ overflow: "hidden" }}>
                 <AppGrid
                     {...otherProps}
                     loading={loading}
@@ -154,7 +154,8 @@ export const Grid = <TData, TParams>(gridProps: GridModelProps<TData, TParams>) 
                     rows={rows}
                     getRowId={(row) => row.id ?? row?.[rowIdKey]}
                     checkboxSelection={checkboxSelection}
-                    density="standard"
+                    columnHeaderHeight={50}
+                    rowHeight={50}
                     onFilterModelChange={
                         isClientSideSearch
                             ? undefined

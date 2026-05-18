@@ -55,7 +55,7 @@ export const FileUploadInput = ({
                 sx={{
                     border: 1,
                     borderColor: error ? "error.main" : "divider",
-                    borderRadius: 2,
+                    borderRadius: 3,
                     borderStyle: "dashed",
                     p: 1.5,
                     pl: 0.5,

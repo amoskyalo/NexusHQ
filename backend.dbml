@@ -1,10 +1,10 @@
 Table users {
   id            String [primary key]
-  firstName     String
-  lastName      String
-  phoneNumber   String 
-  email         String
-  password      String
+  firstName     String [not null]
+  lastName      String [not null]
+  phoneNumber   String [not null]
+  email         String [not null]
+  password      String [not null]
   organizations String[]
   role          ROLE [default: 'ADMIN']
   createdAt     DateTime
@@ -14,9 +14,29 @@ Table users {
 Table organizations {
   id        String [primary key]
   userId   string [not null]
-  orgName   String
-  slug      String
-  modules   MODULES[]
+  orgName   String [not null]
+  slug      String [not null]
+  modules   MODULES [default: 'HR']
+}
+
+Table departments {
+  id  String [primary key]
+  orgId String [not null]
+  departmentName String [not null]
+  description String [not null]
+}
+
+Table employees {
+  id String [primary key]
+  departmentId String [not null]
+  firstName String [not null]
+  lastName String [not null]
+  email String [not null]
+  phoneNumber String [not null]
+  position String [not null]
+  docs DOCUMENT_TYPE [default: 'ID_CARD']
+  createdAt DateTime
+  updatedAt DateTime
 }
 
 enum ROLE {
@@ -33,4 +53,12 @@ enum MODULES {
   AGILE
 }
 
+enum DOCUMENT_TYPE {
+  ID_CARD
+  PASSPORT
+  DRIVING_LICENSE
+}
+
 Ref: "organizations"."userId" < "users"."id"
+Ref: "employees"."departmentId" < "departments"."id"
+Ref: "departments"."orgId" < "organizations"."id"

@@ -22,7 +22,7 @@ import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import Image from "next/image";
 import type { SideNavProps } from "../types/sidenav.types";
 
-const DRAWER_WIDTH_EXPANDED = 300;
+const DRAWER_WIDTH_EXPANDED = 275;
 const DRAWER_WIDTH_COLLAPSED = 70;
 
 export const SideNav = ({ routes }: SideNavProps) => {
@@ -75,8 +75,6 @@ export const SideNav = ({ routes }: SideNavProps) => {
             <Toolbar
                 sx={{
                     paddingX: collapsed ? "8px !important" : "8px !important",
-                    borderBottom: 1,
-                    borderColor: "divider",
                     minHeight: "56px !important",
                 }}
             >
@@ -99,7 +97,7 @@ export const SideNav = ({ routes }: SideNavProps) => {
                                 width={1440}
                                 height={1440}
                                 alt="Logo"
-                                style={{ height: 45, width: 130 }}
+                                style={{ height: 40, width: 120 }}
                             />
                             <IconButton onClick={isSmallScreen ? toggleMobileOpen : toggleCollapse}>
                                 <PanelLeftClose color="grey" />
@@ -367,9 +365,10 @@ export const SideNav = ({ routes }: SideNavProps) => {
                         width: isSmallScreen ? "75%" : drawerWidth,
                         boxSizing: "border-box",
                         boxShadow: "none",
-                        backgroundColor: "background.default",
+                        backgroundColor: "#f3f4f6",
                         overflow: "hidden",
                         transition: "width 0.2s ease-in-out",
+                        borderRight: 0
                     },
                 }}
             >

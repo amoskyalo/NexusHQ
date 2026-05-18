@@ -26,7 +26,7 @@ export const DatagridFooter = (props: DataGridFooterProps) => {
     const { setPage, setPageSize } = useGridUrlState();
 
     const [prevLoading, setPrevLoading] = useState(loading);
-    const [stablePages, setStablePages] = useState(pages ?? 0);
+    const [stablePages, setStablePages] = useState(pages ?? 1);
     if (prevLoading !== loading) {
         setPrevLoading(loading);
         if (!loading && pages != null && pages !== stablePages) {
@@ -45,22 +45,24 @@ export const DatagridFooter = (props: DataGridFooterProps) => {
 
     return (
         <Box>
-            {!hideRowSizeSelector && <Divider />}
+            {!hideRowSizeSelector && <Divider sx={{ borderColor: "var(--DataGrid-rowBorderColor)" }} />}
             <Stack
                 direction="row"
                 alignItems="center"
                 justifyContent={justifyContent ?? "flex-end"}
-                spacing={5}
-                sx={{ p: 2 }}
+                spacing={3}
+                sx={{ py: 1.5 }}
             >
                 {!isMobile && !hideRowSizeSelector && (
-                    <Stack direction="row" alignItems="center" spacing={2}>
-                        <Typography variant="body2">Rows per page:</Typography>
+                    <Stack direction="row" alignItems="center" spacing={1}>
+                        <Typography variant="body2" color="text.secondary">
+                            Rows per page:
+                        </Typography>
                         <Stack
                             direction="row"
                             alignItems="center"
                             onClick={(event) => setAnchorEl(event.currentTarget)}
-                            sx={{ cursor: "pointer" }}
+                            sx={{ cursor: "pointer", color: "text.secondary" }}
                             spacing={1}
                         >
                             <Typography variant="body2">{limit}</Typography>
@@ -71,7 +73,6 @@ export const DatagridFooter = (props: DataGridFooterProps) => {
 
                 <Pagination
                     variant="outlined"
-                    shape={shape}
                     disabled={loading}
                     onChange={(_, page) => setPage(page)}
                     page={start}

@@ -21,6 +21,7 @@ import {
     FolderKanban,
     GitPullRequest,
     Timer,
+    Network,
 } from "lucide-react";
 
 export const ROUTES: SideNavRoute[] = [
@@ -46,6 +47,12 @@ export const ROUTES: SideNavRoute[] = [
     {
         title: "HR",
         kind: "header",
+    },
+    {
+        title: "Departments",
+        kind: "item",
+        segment: "/departments",
+        icon: <Network size={16} />,
     },
     {
         title: "Employees",

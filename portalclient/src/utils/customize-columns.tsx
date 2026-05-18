@@ -29,9 +29,10 @@ export const useCustomizeGridColumns = (
                 field,
                 copiable,
                 formatValueTo,
+                showTime,
                 renderCell: renderCellFn,
                 ...rest
-            } = column;
+            } = column as any;
 
             let valueGetter;
             let renderCell;
@@ -39,7 +40,8 @@ export const useCustomizeGridColumns = (
             if (typeof valueGetterFn === "function") {
                 valueGetter = valueGetterFn;
             } else if (formatValueTo === "date") {
-                valueGetter = (__: any, row: GridRowModel) => formatDate(row[field]);
+                const hideTime = showTime === false;
+                valueGetter = (__: any, row: GridRowModel) => formatDate(row[field], hideTime);
             } else if (formatValueTo === "currency") {
                 valueGetter = (__: any, row: GridRowModel) => formatCurrency("KES", row[field]);
             } else {

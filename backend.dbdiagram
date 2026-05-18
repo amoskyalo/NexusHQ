@@ -9,14 +9,26 @@
       {
         "name": "users",
         "schemaName": "public",
-        "x": 442.1943359375,
-        "y": 12
+        "x": -329.9692793346905,
+        "y": -304.19431969050004
       },
       {
         "name": "organizations",
         "schemaName": "public",
-        "x": 12,
-        "y": 12
+        "x": 81.09792568191341,
+        "y": -212.97005303988698
+      },
+      {
+        "name": "employees",
+        "schemaName": "public",
+        "x": 63.81325771316341,
+        "y": 154.06431468901877
+      },
+      {
+        "name": "departments",
+        "schemaName": "public",
+        "x": 455.1381306854431,
+        "y": -170.29297979731328
       }
     ],
     "tableGroupCollapseStates": [],
@@ -48,6 +60,81 @@
           "id"
         ],
         "secondTableName": "users",
+        "secondSchemaName": "public",
+        "secondRelation": "*",
+        "checkPoints": []
+      },
+      {
+        "firstFieldNames": [
+          "orgId"
+        ],
+        "firstTableName": "employees",
+        "firstSchemaName": "public",
+        "firstRelation": "1",
+        "secondFieldNames": [
+          "id"
+        ],
+        "secondTableName": "users",
+        "secondSchemaName": "public",
+        "secondRelation": "*",
+        "checkPoints": []
+      },
+      {
+        "firstFieldNames": [
+          "orgId"
+        ],
+        "firstTableName": "employees",
+        "firstSchemaName": "public",
+        "firstRelation": "1",
+        "secondFieldNames": [
+          "id"
+        ],
+        "secondTableName": "organizations",
+        "secondSchemaName": "public",
+        "secondRelation": "*",
+        "checkPoints": []
+      },
+      {
+        "firstFieldNames": [
+          "orgId"
+        ],
+        "firstTableName": "departments",
+        "firstSchemaName": "public",
+        "firstRelation": "1",
+        "secondFieldNames": [
+          "id"
+        ],
+        "secondTableName": "organizations",
+        "secondSchemaName": "public",
+        "secondRelation": "*",
+        "checkPoints": []
+      },
+      {
+        "firstFieldNames": [
+          "departmentId"
+        ],
+        "firstTableName": "employees",
+        "firstSchemaName": "public",
+        "firstRelation": "1",
+        "secondFieldNames": [
+          "id"
+        ],
+        "secondTableName": "organizations",
+        "secondSchemaName": "public",
+        "secondRelation": "*",
+        "checkPoints": []
+      },
+      {
+        "firstFieldNames": [
+          "departmentId"
+        ],
+        "firstTableName": "employees",
+        "firstSchemaName": "public",
+        "firstRelation": "1",
+        "secondFieldNames": [
+          "id"
+        ],
+        "secondTableName": "departments",
         "secondSchemaName": "public",
         "secondRelation": "*",
         "checkPoints": []

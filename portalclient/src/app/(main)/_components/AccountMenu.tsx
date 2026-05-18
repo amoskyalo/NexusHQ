@@ -33,7 +33,7 @@ const AccountMenu = () => {
         }
         window.location.href = "/auth/login";
     };
-    
+
     return (
         <>
             <IconButton
@@ -54,7 +54,9 @@ const AccountMenu = () => {
                         width: 36,
                         height: 36,
                         fontSize: 13,
-                        bgcolor: "primary.main",
+                        bgcolor: "transparent",
+                        color: "text.secondary",
+                        fontWeight: 600,
                     }}
                 >
                     MK

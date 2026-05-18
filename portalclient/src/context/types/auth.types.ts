@@ -3,6 +3,19 @@ export type Permission = {
     action: string;
 };
 
+export type OrganizationModule = "HR" | "FINANCE" | "TECH" | "AGILE";
+
+export type OrganizationType = {
+    id: string;
+    userId: string;
+    name: string;
+    slug: string;
+    industry: string;
+    modules: OrganizationModule[];
+    createdAt: string;
+    updatedAt: string;
+};
+
 export type UserType = {
     id: string;
     phoneNumber: string;
@@ -10,10 +23,15 @@ export type UserType = {
     role: string;
     createdAt: string;
     updatedAt: string;
-    organizations: [];
+    organizations: OrganizationType[];
     firstName: string;
     lastName: string;
     displayName: string;
+};
+
+export type OrganizationContextProps = {
+    selectedOrg?: OrganizationType;
+    setSelectedOrg: (org: OrganizationType) => void;
 };
 
 export type AuthStates = {

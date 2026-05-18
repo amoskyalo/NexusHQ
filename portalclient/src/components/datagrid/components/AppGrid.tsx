@@ -8,7 +8,6 @@ export const AppGrid = (props: DataGridProps) => {
         <Box>
             <DataGrid
                 {...props}
-                // getRowHeight={() => "auto"}
                 getRowClassName={({ indexRelativeToCurrentPage }) =>
                     indexRelativeToCurrentPage % 2 === 0 ? "even-row" : "odd-row"
                 }
@@ -21,7 +20,9 @@ export const AppGrid = (props: DataGridProps) => {
                         backgroundColor: "transparent !important",
                     },
                     "& .MuiDataGrid-columnHeaderTitle": {
-                        fontWeight: "700 !important",
+                        fontWeight: "600 !important",
+                        fontSize: 13,
+                        color: "text.primary",
                     },
                     "&>.MuiDataGrid-main": {
                         "& .MuiDataGrid-columnHeader:focus": {
@@ -42,9 +43,16 @@ export const AppGrid = (props: DataGridProps) => {
                     "&.MuiDataGrid-root .MuiDataGrid-cell:focus-within": {
                         outline: "none !important",
                     },
+                    "& .MuiCheckbox-root": {
+                        padding: "6px",
+                        "& .MuiSvgIcon-root": {
+                            fontSize: 20,
+                        },
+                    },
                     borderColor: "transparent",
                     backgroundColor: "transparent",
                     height: "100%",
+                    "--DataGrid-rowBorderColor": "rgba(0, 0, 0, 0.06)",
                 }}
             />
         </Box>
